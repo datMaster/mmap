@@ -8,8 +8,8 @@
         body { height: 100%; margin: 0; padding: 0 }
         #map-canvas { height: 100%; width: 85%; background-color: #000000; float: right; left: 15%; position: absolute;}
         #controls { height: 100%; width: 15%; background: lightgray; float: left; }
-        #content { width: 100%; height: 100% }
-
+        #content { width: 100%; height: 100%;}
+        #list {overflow-y: scroll; height: 400px;}
         /*#map-canvas, #controls {display: inline}*/
 
 
@@ -18,8 +18,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="parse-1.2.18.js"></script>
     <link rel="stylesheet" href="jquery.mobile-1.4.2.min.css">
-    <script src="jquery-1.10.2.min.js"></script>
-    <script src="jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript">
 
         var markers = new Array();
@@ -138,15 +136,44 @@
             var ParseBase = Parse.Object.extend("mmap");
             var query = new Parse.Query(ParseBase);
             // get one object
-            query.get("UOCqPjl3Dv", {
+//            query.get("UOCqPjl3Dv", {
+//                success: function(parseBase) {
+//                    var cd = parseBase.get("points");
+//                    // from points array to road map
+//                    fromParseToMap(cd);
+//                },
+//                error: function(object, error) {
+//                }
+//            });
+
+
+            query.find({
                 success: function(parseBase) {
-                    var cd = parseBase.get("points");
-                    // from points array to road map
-                    fromParseToMap(cd);
+                    prepareData(parseBase);
                 },
-                error: function(object, error) {
+
+                error: function(error) {
+                    // error is an instance of Parse.Error.
                 }
             });
+
+        }
+
+        // parse data to arrays
+        var pointsStore = [];
+        var labelsStore = [];
+        var objectsId = [];
+        function prepareData(parseBase) {
+            pointsStore.length = 0;
+            labelsStore.length = 0;
+            for(var i = 0; i < parseBase.length; i ++) {
+                var points = parseBase[i].get("points");
+                var label = parseBase[i].get("label");
+                objectsId.push(parseBase[i].id);
+                pointsStore.push(points);
+                labelsStore.push(label);
+            }
+            listCreator(labelsStore);
         }
 
         // data to map        
@@ -175,17 +202,17 @@
             directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
-                    var route = response.routes[0];
-                    var summaryPanel = document.getElementById('directions_panel');
-                    summaryPanel.innerHTML = '';
+//                    var route = response.routes[0];
+//                    var summaryPanel = document.getElementById('directions_panel');
+//                    summaryPanel.innerHTML = '';
                     // For each route, display summary information.
-                    for (var i = 0; i < route.legs.length; i++) {
-                        var routeSegment = i + 1;
-                        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment + '</b><br>';
-                        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-                        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-                        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-                    }
+//                    for (var i = 0; i < route.legs.length; i++) {
+//                        var routeSegment = i + 1;
+//                        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment + '</b><br>';
+//                        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+//                        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+//                        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+//                    }
                 }
             });
         }
@@ -222,6 +249,17 @@
             path.clear();
         }
 
+        // make list
+        function listCreator(nameList) {
+            for(var i = 0; i < nameList.length; i ++) {
+                $("#roadsList").append("<li><a href=\"index.html\" onclick=\"loadRoad("
+                        + i + ")\">" + nameList[i] + "</a></li>");
+            }
+        }
+
+        function loadRoad(id) {
+            fromParseToMap(pointsStore[id]);
+        }
     </script>
 
 </head>
@@ -234,18 +272,17 @@
             <button type="button" onclick="parseLoad()">Load</button>
             <button type="button" onclick="clearPoints()">Clear</button>
 
-            <div role="main" class="ui-content">
+            <div role="main" class="ui-content" id="list">
                 <ul data-role="listview" id="roadsList">
-                    <li><a href="index.html">xx</a></li>
-                    <li><a href="index.html">yy</a></li>
-                    <li><a href="index.html">zz</a></li>
-                    <li><a href="index.html">tt</a></li>
-                    <li><a href="index.html">mm</a></li>
+                    <!--<li><a href="index.html">yy</a></li>-->
+
                 </ul>
             </div>
 
         </div>
         <div id="map-canvas"></div>
     </div>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="jquery.mobile-1.4.2.min.js"></script>
 </body>
 
