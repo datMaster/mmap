@@ -26,6 +26,9 @@
         var directionsDisplay;
         var path = new google.maps.MVCArray(), service = new google.maps.DirectionsService(), shiftPressed = false, poly;
         var beginMarker;
+        var pointsStore = [];
+        var labelsStore = [];
+        var objectsId = [];
         google.maps.event.addDomListener(document, "keydown", function(e) { shiftPressed = e.shiftKey; });
         google.maps.event.addDomListener(document, "keyup", function(e) { shiftPressed = e.shiftKey; });
 
@@ -45,7 +48,7 @@
 
             // set map
             map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
+            poly = new google.maps.Polyline({ map: map });
             // hz
             directionsDisplay = new google.maps.DirectionsRenderer();
             directionsDisplay.setMap(map);
@@ -69,6 +72,8 @@
                             }
                         });
             });
+
+            parseLoad();
         }
 
         // on load
@@ -114,20 +119,25 @@
 
         // save to parse
         function parseSave() {
-            var ParseBase = Parse.Object.extend("mmap");
-            var base = new ParseBase();
-            base.set("label", "test road");
-            base.set("points", points);
+            if($("#plabel").val().length === 0)
+                alert("Please, input label name");
+            else {
+                var ParseBase = Parse.Object.extend("mmap");
+                var base = new ParseBase();
+                base.set("label", $("#plabel").val());
+                base.set("points", points);
 
-            base.save(null, {
-                success: function(base) {
-                    // need update list
-                    alert('New object created with objectId: ' + base.id);
-                },
-                error: function(base, error) {
-                    alert('Failed to create new object, with error code: ' + error.description);
-                }
-            });
+                base.save(null, {
+                    success: function(base) {
+                        // need update list
+                    },
+                    error: function(base, error) {
+                        alert('Failed to create new object, with error code: ' + error.description);
+                    }
+                });
+                listDroper(labelsStore);
+                parseLoad();
+            }
         }
 
         var waypts = [];
@@ -135,23 +145,10 @@
         function parseLoad() {
             var ParseBase = Parse.Object.extend("mmap");
             var query = new Parse.Query(ParseBase);
-            // get one object
-//            query.get("UOCqPjl3Dv", {
-//                success: function(parseBase) {
-//                    var cd = parseBase.get("points");
-//                    // from points array to road map
-//                    fromParseToMap(cd);
-//                },
-//                error: function(object, error) {
-//                }
-//            });
-
-
             query.find({
                 success: function(parseBase) {
                     prepareData(parseBase);
                 },
-
                 error: function(error) {
                     // error is an instance of Parse.Error.
                 }
@@ -160,9 +157,6 @@
         }
 
         // parse data to arrays
-        var pointsStore = [];
-        var labelsStore = [];
-        var objectsId = [];
         function prepareData(parseBase) {
             pointsStore.length = 0;
             labelsStore.length = 0;
@@ -179,6 +173,8 @@
         // data to map        
         function fromParseToMap(e) {
             var start, end;
+            waypts = [];
+            directionsDisplay.setMap(map);
             for(var i = 0; i < e.length; i ++) {
                 switch (i) {
                     case 0 : start = e[i]; break;
@@ -191,7 +187,7 @@
                     }
                 }
             }
-//            requestDirections(begin, end);
+
             var request = {
                 origin: new google.maps.LatLng(start['k'], start['A']),
                 destination: new google.maps.LatLng(end['k'], end['A']),
@@ -239,22 +235,31 @@
 
         // clear all points
         function clearPoints() {
-            poly.setMap(null);
             for(var i = 0; i < markers.length; i ++) {
                 markers[i].setMap(null);
                 cycles[i].setMap(null);
             }
             markers = [];
             cycles = [];
+            points = [];
             path.clear();
+            waypts = [];
+            directionsDisplay.setMap(null);
+//            if(poly.getLength() > 0)
+                poly.setMap(null);
         }
 
         // make list
         function listCreator(nameList) {
             for(var i = 0; i < nameList.length; i ++) {
-                $("#roadsList").append("<li><a href=\"index.html\" onclick=\"loadRoad("
+                $("#roadsList").append("<li><a href=\"\" onclick=\"loadRoad("
                         + i + ")\">" + nameList[i] + "</a></li>");
             }
+        }
+
+        // delete list
+        function listDroper(nameList) {
+            $("#roadsList").empty();
         }
 
         function loadRoad(id) {
@@ -269,7 +274,7 @@
         <div id="controls">
             <button type="button" onclick="road()">Make road</button>
             <button type="button" onclick="parseSave()">Save</button>
-            <button type="button" onclick="parseLoad()">Load</button>
+            <input type="text" name="rlabel" id="plabel">
             <button type="button" onclick="clearPoints()">Clear</button>
 
             <div role="main" class="ui-content" id="list">
