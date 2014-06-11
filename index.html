@@ -49,8 +49,24 @@
             // set map
             map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
             poly = new google.maps.Polyline({ map: map });
-            // hz
+
             directionsDisplay = new google.maps.DirectionsRenderer();
+            var polylineOptions = {
+                strokeColor : "#000000",
+                strokeOpacity : 1.0,
+                strokeWeight : 3
+            };
+
+            var markerOptions = {
+                icon :  "point.png"
+            };
+
+            var renderOptios = {
+                polylineOptions : polylineOptions,
+                markerOptions : mapOptions
+            };
+
+            directionsDisplay.setOptions(polylineOptions);
             directionsDisplay.setMap(map);
 
             // on click
@@ -174,6 +190,29 @@
         function fromParseToMap(e) {
             var start, end;
             waypts = [];
+//            var polylineOptions = {
+//                strokeColor : "#000000",
+//                strokeOpacity : 1.0,
+//                strokeWeight : 3
+//            };
+//            directionsDisplay.polylineOptions(polylineOptions);
+
+            var polylineOptions = {
+                strokeColor : "#000000",
+                strokeOpacity : 1.0,
+                strokeWeight : 3
+            };
+
+            var markerOptions = {
+                icon :  "point.png"
+            };
+
+            var renderOptios = {
+                polylineOptions : polylineOptions,
+                markerOptions : markerOptions
+            };
+
+            directionsDisplay.setOptions(renderOptios);
             directionsDisplay.setMap(map);
             for(var i = 0; i < e.length; i ++) {
                 switch (i) {
@@ -211,6 +250,27 @@
 //                    }
                 }
             });
+            renderCycles(e);
+        }
+
+        //render cycles
+        function renderCycles(e) {
+            for(var i = 0; i < e.length; i ++){
+                var c = e[i];
+                var position = new google.maps.LatLng(c['k'], c['A']);
+                var cyclesOptions = {
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map,
+                center: position,
+                radius: 1000
+            };
+
+            cycles.push(new google.maps.Circle(cyclesOptions));
+            }
         }
 
         // path
@@ -237,6 +297,9 @@
         function clearPoints() {
             for(var i = 0; i < markers.length; i ++) {
                 markers[i].setMap(null);
+            }
+
+            for(var i = 0; i < cycles.length; i ++) {
                 cycles[i].setMap(null);
             }
             markers = [];
