@@ -26,11 +26,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="302" column="39" selection-start="11032" selection-end="11032" vertical-scroll-proportion="0.28343022" vertical-offset="4791" max-vertical-offset="6066">
+            <state line="138" column="50" selection-start="5051" selection-end="5051" vertical-scroll-proportion="0.80668604" vertical-offset="1929" max-vertical-offset="6066">
               <folding>
-                <element signature="e#6258#6694#0" expanded="false" />
-                <element signature="e#10084#10517#0" expanded="false" />
-                <element signature="e#10583#10765#0" expanded="false" />
+                <element signature="e#6260#6696#0" expanded="false" />
+                <element signature="e#10086#10519#0" expanded="false" />
+                <element signature="e#10585#10767#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -187,9 +187,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="151" column="21" selection-start="6137" selection-end="6137" vertical-scroll-proportion="0.0" vertical-offset="2718" max-vertical-offset="4032">
           <folding>
-            <element signature="e#6258#6694#0" expanded="false" />
-            <element signature="e#10084#10517#0" expanded="false" />
-            <element signature="e#10583#10765#0" expanded="false" />
+            <element signature="e#6260#6696#0" expanded="false" />
+            <element signature="e#10086#10519#0" expanded="false" />
+            <element signature="e#10585#10767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -198,9 +198,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="24" selection-start="425" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="450">
           <folding>
-            <element signature="e#6258#6694#0" expanded="false" />
-            <element signature="e#10084#10517#0" expanded="false" />
-            <element signature="e#10583#10765#0" expanded="false" />
+            <element signature="e#6260#6696#0" expanded="false" />
+            <element signature="e#10086#10519#0" expanded="false" />
+            <element signature="e#10585#10767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -214,11 +214,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="39" selection-start="11032" selection-end="11032" vertical-scroll-proportion="0.28343022" vertical-offset="4791" max-vertical-offset="6066">
+        <state line="138" column="50" selection-start="5051" selection-end="5051" vertical-scroll-proportion="0.80668604" vertical-offset="1929" max-vertical-offset="6066">
           <folding>
-            <element signature="e#6258#6694#0" expanded="false" />
-            <element signature="e#10084#10517#0" expanded="false" />
-            <element signature="e#10583#10765#0" expanded="false" />
+            <element signature="e#6260#6696#0" expanded="false" />
+            <element signature="e#10086#10519#0" expanded="false" />
+            <element signature="e#10585#10767#0" expanded="false" />
           </folding>
         </state>
       </provider>

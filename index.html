@@ -145,7 +145,7 @@
 
                 base.save(null, {
                     success: function(base) {
-                        // need update list
+                        $("#plabel").val("");
                     },
                     error: function(base, error) {
                         alert('Failed to create new object, with error code: ' + error.description);
