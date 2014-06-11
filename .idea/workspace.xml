@@ -26,11 +26,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="50" selection-start="5051" selection-end="5051" vertical-scroll-proportion="0.80668604" vertical-offset="1929" max-vertical-offset="6066">
+            <state line="330" column="13" selection-start="11850" selection-end="11850" vertical-scroll-proportion="0.47674417" vertical-offset="5162" max-vertical-offset="6120">
               <folding>
-                <element signature="e#6260#6696#0" expanded="false" />
-                <element signature="e#10086#10519#0" expanded="false" />
-                <element signature="e#10585#10767#0" expanded="false" />
+                <element signature="e#6267#6703#0" expanded="false" />
+                <element signature="e#10093#10526#0" expanded="false" />
+                <element signature="e#10592#10774#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -137,6 +137,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="79ad9f3e-a037-41e0-aa86-c9dbfa94fa82" name="Default" comment="" />
@@ -187,9 +204,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="151" column="21" selection-start="6137" selection-end="6137" vertical-scroll-proportion="0.0" vertical-offset="2718" max-vertical-offset="4032">
           <folding>
-            <element signature="e#6260#6696#0" expanded="false" />
-            <element signature="e#10086#10519#0" expanded="false" />
-            <element signature="e#10585#10767#0" expanded="false" />
+            <element signature="e#6267#6703#0" expanded="false" />
+            <element signature="e#10093#10526#0" expanded="false" />
+            <element signature="e#10592#10774#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -198,27 +215,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="24" selection-start="425" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="450">
           <folding>
-            <element signature="e#6260#6696#0" expanded="false" />
-            <element signature="e#10086#10519#0" expanded="false" />
-            <element signature="e#10585#10767#0" expanded="false" />
+            <element signature="e#6267#6703#0" expanded="false" />
+            <element signature="e#10093#10526#0" expanded="false" />
+            <element signature="e#10592#10774#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery.mobile-1.4.2.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="715">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="50" selection-start="5051" selection-end="5051" vertical-scroll-proportion="0.80668604" vertical-offset="1929" max-vertical-offset="6066">
+        <state line="330" column="13" selection-start="11850" selection-end="11850" vertical-scroll-proportion="0.47674417" vertical-offset="5162" max-vertical-offset="6120">
           <folding>
-            <element signature="e#6260#6696#0" expanded="false" />
-            <element signature="e#10086#10519#0" expanded="false" />
-            <element signature="e#10585#10767#0" expanded="false" />
+            <element signature="e#6267#6703#0" expanded="false" />
+            <element signature="e#10093#10526#0" expanded="false" />
+            <element signature="e#10592#10774#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -326,6 +326,9 @@
         }
 
         function loadRoad(id) {
+            for(var i = 0; i < cycles.length; i ++) {
+                cycles[i].setMap(null);
+            }
             fromParseToMap(pointsStore[id]);
         }
     </script>
