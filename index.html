@@ -6,8 +6,8 @@
     <style type="text/css">
         html { height: 100% }
         body { height: 100%; margin: 0; padding: 0 }
-        #map-canvas { height: 100%; width: 85%; background-color: #000000; float: right; left: 15%; position: absolute;}
-        #controls { height: 100%; width: 15%; background: lightgray; float: left; }
+        #map-canvas { height: 100%; width: 85%; background-color: #000000; float: right; position: absolute;}
+        #controls { height: 100%; width: 15%; background: lightgray; float: right; }
         #content { width: 100%; height: 100%;}
         #list {overflow-y: scroll; height: 400px;}
         /*#map-canvas, #controls {display: inline}*/
@@ -58,7 +58,7 @@
             };
 
             var markerOptions = {
-                icon :  "point.png"
+                icon :  "img/point.png"
             };
 
             var renderOptios = {
@@ -116,7 +116,7 @@
             var marker = new google.maps.Marker({
                 position: position,
                 map: map,
-                icon: "point.png"
+                icon: "img/point.png"
             });
 
             // push to storage arrays (for clear and parse)
